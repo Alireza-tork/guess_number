@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100vh;
+            background-color: antiquewhite;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        div{
+            background-color: coral;
+            width: 400px;
+            min-height: 300px;
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        p{
+            font-size: larger;
+            font-weight: bolder;
+            text-align: center;
+            margin: 10px;
+        }
+        h1{
+            text-align: center;
+            font-size: 4rem;
+        }
+        input{
+            text-align: end;
+            width: 50%;
+            height: 30px;
+            margin-bottom: 10px;
+        }
+        button{
+            width: 60px;
+            height: 30px;
+            background-color: chartreuse;
+            border: none;
+            border-radius: 4px;
+        }
+        h2{
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="">
+        <p>عددی که من انتخاب کردم را حدس بزن</p>
+        <h1></h1>
+        <input type="number" placeholder="بین یک تا صد یک عدد را وارد کن">
+        <button type="button">تایید</button>
+        <h2></h2>
+        <span></span>
+    </div>
+
+    <script>
+        let guess = document.getElementsByTagName('input')[0]
+        let btn = document.getElementsByTagName('button')[0]
+        let rand = document.getElementsByTagName('h1')[0]
+        let result = document.getElementsByTagName('h2')[0]
+        let wrong = document.getElementsByTagName('span')[0]
+        
+        let randNumber = Math.ceil(Math.random()*100)
+        rand.innerText = randNumber
+        rand.style.filter='blur(11px)'
+
+        btn.addEventListener('click',()=>{
+
+            if(guess.value == randNumber){
+                result.innerText = `✅ عدد درست است`
+                rand.style.filter='blur(0px)'
+                rand.style.color= 'green'
+            }else if (guess.value > randNumber) {
+                result.innerText = `🔻 عدد بزرگ است` 
+                wrong.innerText = wrong.innerText + `❌${guess.value}`
+
+            }else{
+                result.innerText = `🔺 عدد کوچک است`
+                wrong.innerText = wrong.innerText + `❌${guess.value}`
+            }
+            guess.value = ""
+
+        })
+
+        
+        
+        
+    </script>
+</body>
+</html>
